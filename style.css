@@ -55,3 +55,11 @@ button {
     margin-top: 20px;
     color: #333;
 }
+.weather-output h3{
+    margin-bottom:10px;
+    color:#2563eb;
+}
+
+.weather-output p{
+    margin:8px 0;
+}

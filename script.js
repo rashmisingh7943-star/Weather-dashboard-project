@@ -18,22 +18,28 @@ try {
     const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
 );
+    if (!response.ok) {
+        throw new Error("City not found");
+    }
 
 const data = await response.json();
-
 output.innerHTML = `
-    <h3>${data.name}</h3>
-    <p>Temperature: ${data.main.temp} °C</p>
-        <p>Condition: ${data.weather[0].main}</p>
-            <p>Humidity: ${data.main.humidity}%</p>
-                <p>Wind Speed: ${data.wind.speed} m/s</p>
+        <h3>${data.name}, ${data.sys.country}</h3>
+        <p><strong>Temperature:</strong> ${data.main.temp} °C</p>
+        <p><strong>Condition:</strong> ${data.weather[0].main}</p>
+        <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
+        <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+    `;
 
-
-`;
+    cityInput.value = "";
 
 } catch (error) {
 
-    output.textContent = "Something went wrong.";
+    output.textContent = error.message;
 
 }
 });
+
+
+
+
