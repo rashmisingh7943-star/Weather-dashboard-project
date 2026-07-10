@@ -26,6 +26,8 @@ output.innerHTML = `
     <p>Temperature: ${data.main.temp} °C</p>
         <p>Condition: ${data.weather[0].main}</p>
             <p>Humidity: ${data.main.humidity}%</p>
+                <p>Wind Speed: ${data.wind.speed} m/s</p>
+
 
 `;
 
