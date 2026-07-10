@@ -8,5 +8,10 @@ form.addEventListener("submit", (event) => {
 
     const city = cityInput.value.trim();
 
-    console.log(city);
+    if (!city) {
+    output.textContent = "Please enter a city name.";
+    return;
+}
+
+console.log(city);
 });
