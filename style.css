@@ -125,3 +125,12 @@ button:active {
         text-align: center;
     }
 }
+#location-btn {
+    background: #10b981;
+    margin-top: 12px;
+    width: 100%;
+}
+
+#location-btn:hover {
+    background: #059669;
+}

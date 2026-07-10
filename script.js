@@ -1,4 +1,5 @@
 // Initial JavaScript setup
+const locationBtn = document.getElementById("location-btn");
 const form = document.getElementById('weather-form');
 const cityInput = document.getElementById('city');
 const output = document.getElementById('output');
@@ -38,6 +39,9 @@ output.innerHTML = `
     output.textContent = error.message;
 
 }
+});
+locationBtn.addEventListener("click", () => {
+    alert("Current Location feature coming soon...");
 });
 
 
