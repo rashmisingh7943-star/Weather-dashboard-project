@@ -21,7 +21,10 @@ try {
 
 const data = await response.json();
 
-console.log(data);
+output.innerHTML = `
+    <h3>${data.name}</h3>
+    <p>Temperature: ${data.main.temp} °C</p>
+`;
 
 } catch (error) {
 
