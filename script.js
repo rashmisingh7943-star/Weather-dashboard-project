@@ -12,6 +12,6 @@ form.addEventListener("submit", (event) => {
     output.textContent = "Please enter a city name.";
     return;
 }
-
+output.textContent = "Loading...";
 console.log(city);
 });
