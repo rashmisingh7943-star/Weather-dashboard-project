@@ -134,3 +134,8 @@ button:active {
 #location-btn:hover {
     background: #059669;
 }
+.weather-output img{
+    width:80px;
+    height:80px;
+    margin:10px 0;
+}
