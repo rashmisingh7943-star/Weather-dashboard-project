@@ -19,7 +19,9 @@ try {
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
 );
 
-console.log(response);
+const data = await response.json();
+
+console.log(data);
 
 } catch (error) {
 
