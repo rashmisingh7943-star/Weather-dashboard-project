@@ -6,6 +6,7 @@ const cityInput = document.getElementById("city");
 const output = document.getElementById("output");
 
 const API_KEY = "69856d231a8813dc1086247428147fa7"; 
+let searchHistory = JSON.parse(localStorage.getItem("history")) || [];
 
 // Search by City
 form.addEventListener("submit", async (event) => {
@@ -32,8 +33,18 @@ form.addEventListener("submit", async (event) => {
         }
 
         const data = await response.json();
+        if (!searchHistory.includes(city)) {
+    searchHistory.unshift(city);
+
+    if (searchHistory.length > 5) {
+        searchHistory.pop();
+    }
+
+    localStorage.setItem("history", JSON.stringify(searchHistory));
+}
 
         output.innerHTML = `
+
             <h3>${data.name}, ${data.sys.country}</h3>
 
             <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
@@ -47,6 +58,9 @@ form.addEventListener("submit", async (event) => {
             <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
 
             <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+                    <p><strong>Sunrise:</strong> ${new Date(data.sys.sunrise * 1000).toLocaleTimeString()}</p>
+
+<p><strong>Sunset:</strong> ${new Date(data.sys.sunset * 1000).toLocaleTimeString()}</p>
         `;
 
         cityInput.value = "";
@@ -92,6 +106,11 @@ async function getWeatherByLocation(lat, lon) {
             <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
 
             <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+                    <p><strong>Sunrise:</strong> ${new Date(data.sys.sunrise * 1000).toLocaleTimeString()}</p>
+
+<p><strong>Sunset:</strong> ${new Date(data.sys.sunset * 1000).toLocaleTimeString()}</p>
+    
+
         `;
 
     } catch (error) {
